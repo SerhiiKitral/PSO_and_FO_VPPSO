@@ -84,7 +84,7 @@ class FOVPPSO:
         self.weighted_avg_improvement = 0.0
         self.weighted_conv_rate = 0.0
         self.iteration = 0
-        # print("Initialized FOVPPSO with two-swarm strategy.")
+        print("Initialized FOVPPSO with two-swarm strategy.")
 
     def step(self):
         """Perform one iteration of FO-VPPSO updates."""
@@ -201,12 +201,12 @@ class FOVPPSO:
         # Save current best for next iteration
         self.prev_gbest_value = self.gbest_value
         self.iteration += 1
-        # print(
-        #     f"Iteration {self.iteration}: BestFitness = {self.gbest_value}, beta = {self.beta}"
-        # )
+        print(
+            f"Iteration {self.iteration}: BestFitness = {self.gbest_value}, beta = {self.beta}"
+        )
 
     def run(self):
-        # print("Starting FO-VPPSO optimization...")
+        print("Starting FO-VPPSO optimization...")
         self.prev_gbest_value = self.gbest_value
         self.no_improve_counter = 0
 
@@ -219,7 +219,7 @@ class FOVPPSO:
                 self.no_improve_counter = 0
             self.prev_gbest_value = self.gbest_value
             if self.no_improve_counter >= 20:
-                # print("Early stopping triggered (no improvement)")
+                print("Early stopping triggered (no improvement)")
                 break
 
-        # print(f"FO-VPPSO completed. Best fitness = {self.gbest_value}")
+        print(f"FO-VPPSO completed. Best fitness = {self.gbest_value}")

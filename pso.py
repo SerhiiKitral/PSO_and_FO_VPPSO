@@ -118,10 +118,10 @@ class PSO:
                 self.gbest_position = list(self.positions[i])
         self.iteration += 1
         # Print progress to console
-        # print(f"Iteration {self.iteration}: BestFitness = {self.gbest_value}")
+        print(f"Iteration {self.iteration}: BestFitness = {self.gbest_value}")
 
     def run(self):
-        # print("Starting PSO optimization...")
+        print("Starting PSO optimization...")
         self.prev_gbest_value = self.gbest_value
         self.no_improve_counter = 0
 
@@ -134,7 +134,7 @@ class PSO:
                 self.no_improve_counter = 0
             self.prev_gbest_value = self.gbest_value
             if self.no_improve_counter >= 20:
-                # print("Early stopping triggered (no improvement)")
+                print("Early stopping triggered (no improvement)")
                 break
 
-        # print(f"PSO completed. Best fitness = {self.gbest_value}")
+        print(f"PSO completed. Best fitness = {self.gbest_value}")

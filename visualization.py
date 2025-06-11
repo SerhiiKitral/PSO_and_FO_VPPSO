@@ -74,7 +74,7 @@ def plot_swarm_paths(terrain, paths, output_plot_path):
     )
     fig.write_html(
         output_plot_path,
-        auto_open=False,
+        auto_open=True,
         include_plotlyjs="cdn",
         config={"responsive": True},
     )
