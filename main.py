@@ -30,7 +30,7 @@ class OptimizationThread(QThread):
 class InterfaceGUI(QWidget):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Swarm Optimization UI")
+        self.setWindowTitle("Оптимізація рою")
         self.setMinimumSize(600, 400)
 
         font = QFont("JetBrainsMono Nerd Font", 10)
@@ -44,14 +44,14 @@ class InterfaceGUI(QWidget):
         self.current_column = 0
 
         self.opt_alg = self.labeled_radiobutton(
-            "Optimization",
+            "Оптимізація",
             [("PSO", "PSO"), ("FO-VPPSO", "FO-VPPSO")],
             default="FO-VPPSO",
         )
         self.place_widget(QLabel(""))
         self.terrain_mode = self.labeled_radiobutton(
-            "Terrain Mode",
-            [("Static", "Static"), ("Random", "Random")],
+            "Режим місцевості",
+            [("Статичний", "Static"), ("Випадковий", "Random")],
             default="Static",
         )
 
@@ -69,26 +69,30 @@ class InterfaceGUI(QWidget):
 
         self.next_column()
 
-        self.num_uavs = self.labeled_int_entry("Number of UAVs", "3")
-        self.waypoints_per_uav = self.labeled_int_entry("Waypoints per UAV", "4")
-        self.max_iter = self.labeled_int_entry("Max iterations", "300")
-        self.swarm_size = self.labeled_int_entry("Swarm size", "200")
-        self.a_max = self.labeled_float_entry("Max altitude (A_max)", "3.0")
-        self.p_co = self.labeled_float_entry("Collision cost (P_co)", "1000.0")
-        self.q = self.labeled_float_entry("Terrain cost (Q)", "100.0")
+        self.num_uavs = self.labeled_int_entry("Кількість БПЛА", "3")
+        self.waypoints_per_uav = self.labeled_int_entry("Точки маршруту БПЛА", "4")
+        self.max_iter = self.labeled_int_entry("Макс. кількість ітерацій", "300")
+        self.swarm_size = self.labeled_int_entry("Розмір рою", "200")
+        self.a_max = self.labeled_float_entry("Максимальна висота (A_max)", "3.0")
+        self.p_co = self.labeled_float_entry("Вартість зіткнення (P_co)", "1000.0")
+        self.q = self.labeled_float_entry("Вартість місцевості (Q)", "100.0")
 
         self.next_column()
 
-        self.epsilon = self.labeled_float_entry("Mountain penalty (ε)", "1000000.0")
-        self.d_safe = self.labeled_float_entry("Safe distance (d_safe)", "5.0")
-        self.l_min = self.labeled_float_entry("Min leg length (l_min)", "1.0")
-        self.l_max = self.labeled_float_entry("Max leg length (l_max)", "30.0")
-        self.psi_max = self.labeled_float_entry("Max yaw angle (ψ_max°)", "90.0")
+        self.epsilon = self.labeled_float_entry("Гірський штраф (ε)", "1000000.0")
+        self.d_safe = self.labeled_float_entry("Безпечна відстань (d_safe)", "5.0")
+        self.l_min = self.labeled_float_entry("Мінімальна довжина ноги (l_min)", "1.0")
+        self.l_max = self.labeled_float_entry(
+            "Максимальна довжина ноги (l_max)", "30.0"
+        )
+        self.psi_max = self.labeled_float_entry(
+            "Максимальний кут повороту (ψ_max°)", "90.0"
+        )
         self.theta_max = self.labeled_float_entry(
-            "Max pitch angle (θ_max)", str(round(math.pi / 8, 3))
+            "Максимальний кут нахилу (θ_max)", str(round(math.pi / 8, 3))
         )
 
-        self.run_button = QPushButton("Run Optimization")
+        self.run_button = QPushButton("Запустити оптимізацію")
         self.run_button.clicked.connect(self.run_optimization)
 
         self.place_widget(QLabel(""))

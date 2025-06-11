@@ -54,7 +54,7 @@ def plot_swarm_paths(terrain, paths, output_plot_path):
                 z=[zs[0]],
                 mode="markers",
                 marker=dict(size=6, symbol="circle", color="green"),
-                name=f"UAV{idx+1} Start",
+                name=f"UAV{idx+1} Початок",
             )
         )
         fig.add_trace(
@@ -64,13 +64,13 @@ def plot_swarm_paths(terrain, paths, output_plot_path):
                 z=[zs[-1]],
                 mode="markers",
                 marker=dict(size=6, symbol="x", color="red"),
-                name=f"UAV{idx+1} End",
+                name=f"UAV{idx+1} Кінець",
             )
         )
     # Set titles and axes labels
     fig.update_layout(
-        title="UAV Swarm Paths over Terrain",
-        scene=dict(xaxis_title="X", yaxis_title="Y", zaxis_title="Z (Altitude)"),
+        title="Шляхи рою БПЛА над місцевістю",
+        scene=dict(xaxis_title="X", yaxis_title="Y", zaxis_title="Z (Висота)"),
     )
     fig.write_html(
         output_plot_path,
